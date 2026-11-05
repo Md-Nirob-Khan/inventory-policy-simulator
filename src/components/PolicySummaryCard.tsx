@@ -78,21 +78,21 @@ export const PolicySummaryCard: React.FC<PolicySummaryCardProps> = ({
         </div>
       </div>
 
-      {/* Key Winner Metrics Quick Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-          <span className="text-[11px] text-slate-400 uppercase font-medium">Total Cost</span>
-          <div className="text-lg md:text-xl font-bold text-white mt-0.5">
+      {/* Key Winner Metrics Quick Grid: 1 col on mobile, 2x2 grid on medium, 4 cols on wide */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-6">
+        <div className="bg-slate-800/60 rounded-xl p-3.5 border border-slate-700/50 flex flex-col justify-between min-w-0 overflow-hidden">
+          <span className="text-[11px] text-slate-400 uppercase font-medium tracking-wide">Total Cost</span>
+          <div className="text-lg md:text-xl font-bold text-white mt-1">
             ${winner.totalCost.toFixed(2)}
           </div>
-          <span className="text-[10px] text-slate-400">
+          <span className="text-[10px] text-slate-400 mt-1 truncate">
             Ord: ${winner.totalOrderingCost.toFixed(0)} | Hold: ${winner.totalHoldingCost.toFixed(0)}
           </span>
         </div>
 
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-          <span className="text-[11px] text-slate-400 uppercase font-medium">Achieved Fill Rate</span>
-          <div className="flex items-center gap-1.5 mt-0.5">
+        <div className="bg-slate-800/60 rounded-xl p-3.5 border border-slate-700/50 flex flex-col justify-between min-w-0 overflow-hidden">
+          <span className="text-[11px] text-slate-400 uppercase font-medium tracking-wide">Achieved Fill Rate</span>
+          <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5 mt-1">
             <span
               className={`text-lg md:text-xl font-bold ${
                 isWinnerServiceTargetMet ? 'text-emerald-400' : 'text-amber-400'
@@ -100,31 +100,33 @@ export const PolicySummaryCard: React.FC<PolicySummaryCardProps> = ({
             >
               {winner.fillRate.toFixed(1)}%
             </span>
-            <span className="text-[10px] text-slate-400">
+            <span className="text-[10px] text-slate-400 shrink-0">
               (Target: {inputs.serviceLevel}%)
             </span>
           </div>
-          <span className="text-[10px] text-emerald-300">
+          <span className="text-[10px] text-emerald-300 mt-1 flex items-center gap-1">
             {isWinnerServiceTargetMet ? '✓ Met Service Target' : '⚠ Below Target'}
           </span>
         </div>
 
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-          <span className="text-[11px] text-slate-400 uppercase font-medium">Stockout Incidents</span>
-          <div className="text-lg md:text-xl font-bold text-white mt-0.5">
-            {winner.stockoutDays} <span className="text-xs font-normal text-slate-400">days</span>
+        <div className="bg-slate-800/60 rounded-xl p-3.5 border border-slate-700/50 flex flex-col justify-between min-w-0 overflow-hidden">
+          <span className="text-[11px] text-slate-400 uppercase font-medium tracking-wide">Stockout Incidents</span>
+          <div className="text-lg md:text-xl font-bold text-white mt-1 flex items-baseline gap-1">
+            <span>{winner.stockoutDays}</span>
+            <span className="text-xs font-normal text-slate-400">days</span>
           </div>
-          <span className="text-[10px] text-slate-400">
+          <span className="text-[10px] text-slate-400 mt-1">
             {winner.totalStockoutUnits} lost units
           </span>
         </div>
 
-        <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-          <span className="text-[11px] text-slate-400 uppercase font-medium">Average Stock</span>
-          <div className="text-lg md:text-xl font-bold text-white mt-0.5">
-            {winner.averageInventory.toFixed(0)} <span className="text-xs font-normal text-slate-400">units</span>
+        <div className="bg-slate-800/60 rounded-xl p-3.5 border border-slate-700/50 flex flex-col justify-between min-w-0 overflow-hidden">
+          <span className="text-[11px] text-slate-400 uppercase font-medium tracking-wide">Average Stock</span>
+          <div className="text-lg md:text-xl font-bold text-white mt-1 flex items-baseline gap-1">
+            <span>{winner.averageInventory.toFixed(0)}</span>
+            <span className="text-xs font-normal text-slate-400">units</span>
           </div>
-          <span className="text-[10px] text-slate-400">
+          <span className="text-[10px] text-slate-400 mt-1 truncate">
             {winner.orderCount} replenishment orders
           </span>
         </div>
