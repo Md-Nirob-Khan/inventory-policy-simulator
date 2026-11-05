@@ -1,0 +1,7 @@
+{
+  "name": "Inventory Policy Simulator",
+  "description": "Interactive supply chain simulator comparing EOQ, Reorder Point (s,Q) with safety stock, and Periodic Review policies with stochastic daily demand, cost metrics, and AI explanations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
